@@ -1,18 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 
-export default function Clock() {
-  const [now, setNow] = useState(new Date(Date.now()))
-
-  const getRotation = (val) => val / 60 - 0.25
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNow(new Date(Date.now()))
-      console.log("Updating the time")
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
+export default function Clock({ time }) {
   return (
     <div className="face">
       <div className="big hand"></div>
@@ -22,10 +10,11 @@ export default function Clock() {
       <style jsx>{`
         .face {
           border: 0.5rem solid #000;
-          width: 32rem;
-          height: 32rem;
+          width: 20rem;
+          height: 20rem;
           border-radius: 50%;
           position: relative;
+          margin: 0;
         }
         .hand {
           background: black;
@@ -34,19 +23,19 @@ export default function Clock() {
           left: calc(50% - 0.125rem);
           top: calc(50% - 0.125rem);
           transform-origin: center left;
-          width: 14rem;
+          width: 9rem;
           box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
         }
         .second {
           background: red;
-          transform: rotate(${now.getSeconds() / 60 - 0.25}turn);
+          transform: rotate(${time.getSeconds() / 60 - 0.25}turn);
         }
         .big {
-          transform: rotate(${now.getMinutes() / 60 - 0.25}turn);
+          transform: rotate(${time.getMinutes() / 60 - 0.25}turn);
         }
         .little {
-          width: 10rem;
-          transform: rotate(${now.getHours() / 12 - 0.25}turn);
+          width: 7rem;
+          transform: rotate(${time.getHours() / 12 - 0.25}turn);
         }
       `}</style>
     </div>
