@@ -5,12 +5,9 @@ import Clock from "../components/Clock"
 export default function Index() {
   const [now, setNow] = useState(new Date(Date.now()))
 
-  const getRotation = (val) => val / 60 - 0.25
-
   useEffect(() => {
     const interval = setInterval(() => {
       setNow(new Date(Date.now()))
-      console.log("Updating the time")
     }, 1000)
     return () => clearInterval(interval)
   }, [])
@@ -31,6 +28,7 @@ export default function Index() {
       <style jsx global>{`
         html,
         body {
+          background: linear-gradient(#fff, #cacaca);
           margin: 0;
           padding: 0;
           height: 100%;
