@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import Head from "next/head"
-import Clock from "../components/Clock"
+
+const Clock = dynamic(import("../components/Clock"))
 
 export default function Index() {
   const [now, setNow] = useState(new Date(Date.now()))

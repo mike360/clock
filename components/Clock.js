@@ -26,7 +26,8 @@ export default function Clock({ time }) {
           border-radius: 50%;
           position: relative;
           margin: 0;
-          box-shadow: inset 4px 4px 12px rgba(0, 0, 0, 0.7);
+          box-shadow: inset 0 12px 32px rgba(0, 0, 0, 0.5),
+            0 12px 42px rgba(0, 0, 0, 0.2);
         }
         .hand {
           background: black;
@@ -40,14 +41,14 @@ export default function Clock({ time }) {
         }
         .second {
           background: red;
+          height: 0.15rem;
           transform: rotate(${time.getSeconds() / 60 - 0.25}turn);
-          transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
         }
         .big {
           transform: rotate(${time.getMinutes() / 60 - 0.25}turn);
         }
         .little {
-          width: 7rem;
+          width: 6rem;
           transform: rotate(
             ${time.getHours() / 12 + time.getMinutes() / 60 / 12 - 0.25}turn
           );
